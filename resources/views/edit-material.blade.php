@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('title')
-<title>Добавить материал</title>
+<title>Обновить материал</title>
 @endsection
 @section('content')
 <div class="container">

@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 
-class Book extends Model
+class Material extends Model
 {
   use HasFactory, SoftDeletes;
 
-  protected $table = 'books';
+  protected $table = 'materials';
   protected $guarded = [];
 
   public function category()
@@ -25,6 +25,6 @@ class Book extends Model
 
   public function tags()
   {
-    return $this->belongsToMany(Tag::class, 'book_tags', 'book_id', 'tag_id');
+    return $this->belongsToMany(Tag::class, 'material_tags', 'material_id', 'tag_id');
   }
 }

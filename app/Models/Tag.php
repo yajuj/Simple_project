@@ -12,9 +12,10 @@ class Tag extends Model
 
   protected $table = 'tags';
   protected $guarded = [];
+  public $timestamps = false;
 
-  public function books()
+  public function materials()
   {
-    return $this->belongsToMany(Book::class, 'book_tags', 'tag_id', 'book_id');
+    return $this->belongsToMany(Material::class, 'material_tags', 'tag_id', 'material_id');
   }
 }

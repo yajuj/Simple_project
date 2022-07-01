@@ -13,14 +13,8 @@ return new class extends Migration
    */
   public function up()
   {
-    Schema::create('links', function (Blueprint $table) {
-      $table->id();
-      $table->string('url');
-      $table->string('label');
-      $table->timestamps();
-      $table->unsignedBigInteger('material_id');
-      $table->foreign('material_id')->references('id')->on('materials');
-      $table->softDeletes();
+    Schema::table('materials', function (Blueprint $table) {
+      $table->string('description')->nullable()->change();
     });
   }
 
@@ -31,6 +25,8 @@ return new class extends Migration
    */
   public function down()
   {
-    Schema::dropIfExists('links');
+    Schema::table('materials', function (Blueprint $table) {
+      $table->string('description')->nullable(false)->change();
+    });
   }
 };

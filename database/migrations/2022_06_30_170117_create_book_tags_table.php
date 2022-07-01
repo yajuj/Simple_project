@@ -13,15 +13,15 @@ return new class extends Migration
    */
   public function up()
   {
-    Schema::create('book_tags', function (Blueprint $table) {
-      $table->unsignedBigInteger('book_id');
+    Schema::create('material_tags', function (Blueprint $table) {
+      $table->unsignedBigInteger('material_id');
       $table->unsignedBigInteger('tag_id');
 
-      $table->index('book_id', 'book_tag_book_idx');
-      $table->index('tag_id', 'book_tag_tag_idx');
+      $table->index('material_id', 'material_tag_material_idx');
+      $table->index('tag_id', 'material_tag_tag_idx');
 
-      $table->foreign('book_id', 'book_tag_book_fk')->on('books')->references('id');
-      $table->foreign('tag_id', 'book_tag_tag_fk')->on('tags')->references('id');
+      $table->foreign('material_id', 'material_tag_material_fk')->on('materials')->references('id');
+      $table->foreign('tag_id', 'material_tag_tag_fk')->on('tags')->references('id');
 
       $table->softDeletes();
     });
@@ -34,6 +34,6 @@ return new class extends Migration
    */
   public function down()
   {
-    Schema::dropIfExists('book_tags');
+    Schema::dropIfExists('material_tags');
   }
 };

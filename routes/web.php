@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Book;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-  return view('view-material');
+Route::namespace('Material')->group(function () {
+  Route::get('/', IndexController::class)->name('list-material');
+  Route::post('/', StoreController::class)->name('store-material');
+  Route::post('/{id}', UpdateController::class)->name('update-material');
+  Route::get('/{material}/edit', EditController::class)->name('edit-material');
+  Route::get('/create-material', CreateController::class)->name('create-material');
+  Route::delete('/', DestroyController::class)->name('destroy-material');
 });

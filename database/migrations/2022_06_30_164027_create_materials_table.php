@@ -3,6 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Enum\Material\MaterialTypesEnum;
+use App\Models\Material;
 
 return new class extends Migration
 {
@@ -13,19 +15,12 @@ return new class extends Migration
    */
   public function up()
   {
-    Schema::create('books', function (Blueprint $table) {
+    Schema::create('materials', function (Blueprint $table) {
       $table->id();
       $table->string('title');
       $table->string('authors');
       $table->string('description');
-      $table->enum('type', [
-        'Книга',
-        'Статья',
-        'Видео',
-        'Сайт/Блог',
-        'Подборка',
-        'Ключевые идеи книги',
-      ]);
+      $table->enum('type', getMaterialTypesEnum());
       $table->timestamps();
       $table->softDeletes();
     });
@@ -38,6 +33,6 @@ return new class extends Migration
    */
   public function down()
   {
-    Schema::dropIfExists('books');
+    Schema::dropIfExists('materials');
   }
 };

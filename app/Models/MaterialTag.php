@@ -6,10 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class BookTag extends Model
+class MaterialTag extends Model
 {
   use HasFactory, SoftDeletes;
 
-  protected $table = 'book_tags';
+  public $timestamps = false;
+
+  protected $table = 'material_tags';
   protected $guarded = [];
 }

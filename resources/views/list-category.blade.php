@@ -1,4 +1,4 @@
-@extends('layouts')
+@extends('layouts.main')
 @section('content')
 <div class="container">
   <h1 class="my-md-5 my-4">Категории</h1>
