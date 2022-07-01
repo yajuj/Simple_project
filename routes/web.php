@@ -15,10 +15,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::namespace('Material')->group(function () {
+  Route::get('/create', CreateController::class)->name('create-material');
   Route::get('/', IndexController::class)->name('list-material');
   Route::post('/', StoreController::class)->name('store-material');
-  Route::patch('/{material}', UpdateController::class)->name('update-material');
+  Route::get('/{material}', ShowController::class)->name('view-material');
+  Route::post('/{material}', UpdateController::class)->name('update-material');
   Route::get('/{material}/edit', EditController::class)->name('edit-material');
-  Route::get('/create-material', CreateController::class)->name('create-material');
   Route::delete('/', DestroyController::class)->name('destroy-material');
+});
+
+Route::namespace('Category')->prefix('categories')->group(function () {
+  Route::delete('/index', DestroyController::class)->name('destroy-category');
+  Route::get('/index', IndexController::class)->name('list-category');
+  Route::post('/index', StoreController::class)->name('store-category');
+  Route::patch('/{category}', UpdateController::class)->name('update-category');
+  Route::get('/{category}/edit', EditController::class)->name('edit-category');
+  Route::get('/create-category', CreateController::class)->name('create-category');
 });

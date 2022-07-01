@@ -28,7 +28,7 @@
       <tbody>
         @foreach ($materials as $material)
         <tr>
-          <td><a href="#">{{$material->title}}</a></td>
+          <td><a href="{{route('view-material', $material)}}">{{$material->title}}</a></td>
           <td>{{$material->authors}}</td>
           <td>{{$material->type}}</td>
           <td>{{$material->category->title}}</td>
