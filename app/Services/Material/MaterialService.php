@@ -17,7 +17,7 @@ class MaterialService
     Material::create($data);
   }
 
-  public function update(Material $material, $data)
+  public function update(Material $material, array $data)
   {
     $material->update($data);
   }

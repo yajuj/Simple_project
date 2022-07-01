@@ -2,9 +2,7 @@
 
 namespace App\Http\Requests\Material;
 
-use App\Enum\Material\MaterialTypesEnum;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rules\Enum;
 
 class UpdateRequest extends FormRequest
 {
@@ -26,11 +24,7 @@ class UpdateRequest extends FormRequest
   public function rules()
   {
     return [
-      "type" => [new Enum(MaterialTypesEnum::class), "required"],
-      "category_id" => ["unique:categories", "required"],
-      "title" => ["string", "required"],
-      "authors" => ["string", "nullable"],
-      "description" => ["string", "nullable"]
+      "title" => ["string", "nullable"],
     ];
   }
 }

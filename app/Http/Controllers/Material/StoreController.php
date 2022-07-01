@@ -18,6 +18,6 @@ class StoreController extends BaseController
 
     $this->service->store($data);
 
-    return redirect('/')->route('list-material');
+    return redirect()->route('list-material');
   }
 }

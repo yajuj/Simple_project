@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Material;
 
+use App\Enum\Material\MaterialTypesEnum;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\Enum;
 
 class StoreRequest extends FormRequest
 {
@@ -24,11 +26,11 @@ class StoreRequest extends FormRequest
   public function rules()
   {
     return [
-      "type" => "",
+      "type" => [new Enum(MaterialTypesEnum::class), "required"],
       "category_id" => ["unique:categories", "required"],
       "title" => ["string", "required"],
-      "authors" => ["string", "required"],
-      "description" => ["string", "required"]
+      "authors" => ["string", "nullable"],
+      "description" => ["string", "nullable"]
     ];
   }
 }
