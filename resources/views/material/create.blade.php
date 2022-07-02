@@ -13,7 +13,7 @@
           <select class="form-select" id="floatingSelectType" name="type">
             <option selected>Выберите тип</option>
             @foreach ($types as $type)
-            <option value="{{$type}}">{{$type}}</option>
+            <option {{old('type')==$type ? 'selected' :''}} value="{{$type}}">{{$type}}</option>
             @endforeach
           </select>
           <label for="floatingSelectType">Тип</label>
@@ -25,7 +25,8 @@
           <select class="form-select" id="floatingSelectCategory" name="category_id">
             <option selected>Выберите категорию</option>
             @foreach ($categories as $category)
-            <option value="{{$category->id}}">{{$category->title}}</option>
+            <option {{old('category_id')==$category ? 'selected' :''}} value="{{$category->id}}">{{$category->title}}
+            </option>
             @endforeach
           </select>
           <label for="floatingSelectCategory">Категория</label>
@@ -34,27 +35,32 @@
           </div>
         </div>
         <div class="form-floating mb-3">
-          <input type="text" class="form-control" placeholder="Напишите название" id="floatingName" name="title">
+          <input type="text" class="form-control" value="{{old('title')}}" placeholder="Напишите название"
+            id="floatingName" name="title">
           <label for="floatingName">Название</label>
           <div class="invalid-feedback">
             Пожалуйста, заполните поле
           </div>
         </div>
         <div class="form-floating mb-3">
-          <input type="text" class="form-control" placeholder="Напишите авторов" id="floatingAuthor" name="authors">
+          <input type="text" class="form-control" value="{{old('authors')}}" placeholder="Напишите авторов"
+            id="floatingAuthor" name="authors">
           <label for="floatingAuthor">Авторы</label>
           <div class="invalid-feedback">
             Пожалуйста, заполните поле
           </div>
         </div>
         <div class="form-floating mb-3">
-          <textarea class="form-control" placeholder="Напишите краткое описание" id="floatingDescription"
-            style="height: 100px" name="description"></textarea>
+          <textarea class="form-control" placeholder="Напишите краткое описание" value="{{old('description')}}"
+            id="floatingDescription" style="height: 100px" name="description"></textarea>
           <label for="floatingDescription">Описание</label>
           <div class="invalid-feedback">
             Пожалуйста, заполните поле
           </div>
         </div>
+        @error('title')
+        <p class="p-1 mt-1 text-danger">Название не может быть пустым</p>
+        @enderror
         <button class="btn btn-primary" type="submit">Добавить</button>
       </form>
     </div>

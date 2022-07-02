@@ -4,6 +4,10 @@
 @endsection
 @section('content')
 <div class="container">
+  @error('url')
+  <div style="width: 300px;" class="p-3 border rounded mt-2 text-danger mx-auto">Ссылка не может быть пустой и должна
+    являтся ссылкой</div>
+  @enderror
   <h1 class="my-md-5 my-4">{{$material->title}}</h1>
   <div class="row mb-3">
     <div class="col-lg-6 col-md-8">

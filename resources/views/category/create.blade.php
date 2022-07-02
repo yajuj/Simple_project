@@ -11,12 +11,16 @@
         @csrf
         @method('POST')
         <div class="form-floating mb-3">
-          <input type="text" class="form-control" placeholder="Напишите название" id="floatingName" name="title">
+          <input type="text" class="form-control" value="" placeholder="Напишите название" id="floatingName"
+            name="title">
           <label for="floatingName">Название</label>
           <div class="invalid-feedback">
             Пожалуйста, заполните поле
           </div>
         </div>
+        @error('title')
+        <p class="p-1 mt-1 text-danger">Название не может быть пустым</p>
+        @enderror
         <button class="btn btn-primary" type="submit">Добавить</button>
       </form>
     </div>

@@ -15,6 +15,9 @@
             id="floatingName" name="title">
           <label for="floatingName">Название</label>
         </div>
+        @error('title')
+        <p class="p-1 mt-1 text-danger">Название не может быть пустым</p>
+        @enderror
         <button class="btn btn-primary" type="submit">Обновить</button>
       </form>
     </div>

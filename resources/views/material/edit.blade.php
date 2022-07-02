@@ -64,7 +64,10 @@
             Пожалуйста, заполните поле
           </div>
         </div>
-        <button class="btn btn-primary" type="submit">Добавить</button>
+        @error('title')
+        <p class="p-1 mt-1 text-danger">Название не может быть пустым</p>
+        @enderror
+        <button class="btn btn-primary" type="submit">Обновить</button>
       </form>
     </div>
   </div>
