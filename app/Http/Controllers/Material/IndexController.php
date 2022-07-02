@@ -31,6 +31,6 @@ class IndexController extends Controller
 
     $materials = collect($rawMaterials)->merge($tags);
 
-    return view('material.list', compact('materials'));
+    return view('material.list', compact('materials', 'query'));
   }
 }
