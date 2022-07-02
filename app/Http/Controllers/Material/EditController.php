@@ -18,6 +18,6 @@ class EditController extends Controller
   {
     $types = getMaterialTypesEnum();
     $categories = Category::all();
-    return view('edit-material', compact('material', 'categories', 'types'));
+    return view('material.edit', compact('material', 'categories', 'types'));
   }
 }

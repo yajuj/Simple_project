@@ -6,7 +6,7 @@
     <div class="col-lg-5 col-md-8">
       <form>
         <div class="form-floating mb-3">
-          <input type="text" class="form-control" placeholder="Напишите название" id="floatingName" name="tag">
+          <input type="text" class="form-control" placeholder="Напишите название" id="floatingName" name="title">
           <label for="floatingName">Название</label>
           <div class="invalid-feedback">
             Пожалуйста, заполните поле

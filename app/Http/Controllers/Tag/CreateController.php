@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Material;
+namespace App\Http\Controllers\Tag;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
 
 class CreateController extends Controller
 {
@@ -14,9 +13,6 @@ class CreateController extends Controller
    */
   public function __invoke()
   {
-    $types = getMaterialTypesEnum();
-    $categories = Category::all();
-
-    return view('material.create', compact('categories', 'types'));
+    return view('tag.create');
   }
 }

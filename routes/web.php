@@ -32,3 +32,21 @@ Route::namespace('Category')->prefix('categories')->group(function () {
   Route::get('/{category}/edit', EditController::class)->name('edit-category');
   Route::get('/create-category', CreateController::class)->name('create-category');
 });
+
+Route::namespace('Tag')->prefix('tags')->group(function () {
+  Route::delete('/index', DestroyController::class)->name('destroy-tag');
+  Route::get('/index', IndexController::class)->name('list-tag');
+  Route::post('/index', StoreController::class)->name('store-tag');
+  Route::patch('/{tag}', UpdateController::class)->name('update-tag');
+  Route::get('/{tag}/edit', EditController::class)->name('edit-tag');
+  Route::get('/create-tag', CreateController::class)->name('create-tag');
+
+  Route::post('/append/{material}', TagToMaterialController::class)->name('append-tag-to-material');
+  Route::delete('/unbind/{material}', RemoveTagToMaterialController::class)->name('unbind-tag-from-material');
+});
+
+Route::namespace('Link')->prefix('links')->group(function () {
+  Route::patch('/', UpdateController::class)->name('update-link');
+  Route::post('/{materialId}', StoreController::class)->name('store-link');
+  Route::delete('/', DestroyController::class)->name('destroy-link');
+});

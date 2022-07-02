@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Material;
 
 use App\Http\Controllers\Controller;
 use App\Models\Material;
+use App\Models\Tag;
 
 class ShowController extends Controller
 {
@@ -15,6 +16,7 @@ class ShowController extends Controller
    */
   public function __invoke(Material $material)
   {
-    return view('view-material', compact('material'));
+    $tags = Tag::all();
+    return view('material.view', compact('material', 'tags'));
   }
 }

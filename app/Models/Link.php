@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Link extends Model
@@ -14,8 +13,8 @@ class Link extends Model
   protected $table = 'links';
   protected $guarded = [];
 
-  public function book()
+  public function materials()
   {
-    return $this->BelongsTo(Book::class);
+    return $this->BelongsTo(Materials::class);
   }
 }

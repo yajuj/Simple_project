@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Category;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
 
 class CreateController extends Controller
 {
@@ -14,6 +13,6 @@ class CreateController extends Controller
    */
   public function __invoke()
   {
-    return view('create-category');
+    return view('category.create');
   }
 }

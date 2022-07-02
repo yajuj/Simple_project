@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Link;
+namespace App\Http\Requests\Tag;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateRequest extends FormRequest
+
+class AppendRequest extends FormRequest
 {
   /**
    * Determine if the user is authorized to make this request.
@@ -24,9 +25,7 @@ class UpdateRequest extends FormRequest
   public function rules()
   {
     return [
-      "label" => ["string", "nullable"],
-      "url" => ["string", "url", "required"],
-      "link_id" => ["string", "required"],
+      "tag_id" => '',
     ];
   }
 }

@@ -15,6 +15,6 @@ class IndexController extends Controller
   public function __invoke()
   {
     $materials = Material::all();
-    return view('list-materials', compact('materials'));
+    return view('material.list', compact('materials'));
   }
 }

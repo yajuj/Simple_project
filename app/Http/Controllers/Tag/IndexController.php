@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Category;
+namespace App\Http\Controllers\Tag;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
+use App\Models\Tag;
 
 class IndexController extends Controller
 {
@@ -14,7 +14,7 @@ class IndexController extends Controller
    */
   public function __invoke()
   {
-    $categories = Category::all();
-    return view('category.list', compact('categories'));
+    $tags = Tag::all();
+    return view('tag.list', compact('tags'));
   }
 }

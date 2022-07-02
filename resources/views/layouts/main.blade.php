@@ -31,7 +31,7 @@
                 <a class="nav-link active" aria-current="page" href="{{route('list-material')}}">Материалы</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Теги</a>
+                <a class="nav-link" href="{{route('list-tag')}}">Теги</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{route('list-category')}}">Категории</a>

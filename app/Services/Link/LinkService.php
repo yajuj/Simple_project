@@ -17,9 +17,10 @@ class LinkService
     Link::create($data);
   }
 
-  public function update(Link $link, array $data)
+  public function update(array $data)
   {
-    $link->update($data);
+    $link =  Link::findOrFail($data['link_id']);
+    $link->update(['url' => $data['url'], 'label' => $data['label']]);
   }
 
   public function destroy($linkId)
