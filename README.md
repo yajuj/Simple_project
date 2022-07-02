@@ -1,2 +1,5 @@
-- Создать .env на основании .env.example, composer upddate, php artisan key:generate, php artisan migrate
+- Создать .env на основании .env.example 
+- composer upddate 
+- php artisan key:generate 
+- php artisan migrate
 - Можно запустить командой php artisan serve
