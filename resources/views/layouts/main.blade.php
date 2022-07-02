@@ -29,7 +29,7 @@
             <ul class="navbar-nav">
               <li class="nav-item">
                 <a class="nav-link 
-                @if (!mb_ereg('tags|categories',url()->current()))
+                @if ($_SERVER['REQUEST_URI']=='/')
                 active
                 @endif
                 " aria-current="page" href="{{route('list-material')}}">Материалы</a>

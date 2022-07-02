@@ -69,7 +69,7 @@
   const modal = document.getElementById('exampleModal')
   modal.addEventListener('show.bs.modal', event => {
   const id = event.relatedTarget.getAttribute('data-bs-whatever')
-  modal.querySelector('#_id') = id;
+  modal.querySelector('#_id').value = id;
 
 })
 </script>

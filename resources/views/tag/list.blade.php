@@ -5,7 +5,7 @@
 @section('content')
 <div class="container">
   <h1 class="my-md-5 my-4">Теги</h1>
-  <a class="btn btn-primary mb-4" href="#" role="button">Добавить</a>
+  <a class="btn btn-primary mb-4" href="{{route('create-tag')}}" role="button">Добавить</a>
   <div class="row">
     <div class="col-md-6">
       <ul class="list-group mb-4">
@@ -53,7 +53,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
-      <div class="modal-footer">
+      <div class="modal-footer border-top-0">
         <form action="{{route('destroy-tag')}}" method="POST">
           @csrf
           @method('delete')
@@ -69,7 +69,7 @@
   const modal = document.getElementById('exampleModal');
     modal.addEventListener('show.bs.modal', event => {
     const id = event.relatedTarget.getAttribute('data-bs-whatever')
-    modal.querySelector('#_id') = id;
+    modal.querySelector('#_id').value = id;
   })
 </script>
 @endsection

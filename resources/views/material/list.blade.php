@@ -66,17 +66,17 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Remove material</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Удалить материал</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
-      <div class="modal-footer">
+      <div class="modal-footer border-top-0">
         <form action="{{route('destroy-material')}}" method="POST">
           @csrf
           @method('delete')
           <input type="hidden" class="form-control" id="_id" name='id'>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <input type="submit" class="btn btn-danger" value="Remove">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+          <input type="submit" class="btn btn-danger" value="Удалить">
         </form>
       </div>
     </div>
@@ -86,7 +86,8 @@
   const modal = document.getElementById('exampleModal')
   modal.addEventListener('show.bs.modal', event => {
   const id = event.relatedTarget.getAttribute('data-bs-whatever');
-  const modalBodyInput = modal.querySelector('#_id') = id;
+  console.log(id);
+  modal.querySelector('#_id').value = id;
 })
 </script>
 @endsection

@@ -18,6 +18,6 @@ class DestroyController extends BaseController
   public function __invoke(Request $request)
   {
     $this->service->destroy($request->id);
-    return redirect()->route('list-material');
+    return back();
   }
 }

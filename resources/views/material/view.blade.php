@@ -191,7 +191,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
-      <div class="modal-footer">
+      <div class="modal-footer border-top-0">
         <form action="{{route('unbind-tag-from-material',$material)}}" method="POST">
           @csrf
           @method('delete')
@@ -214,7 +214,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
-      <div class="modal-footer">
+      <div class="modal-footer border-top-0">
         <form action="{{route('destroy-link')}}" method="POST">
           @csrf
           @method('delete')
@@ -231,10 +231,8 @@
   const modals = document.querySelectorAll('#trashModalLink, #trashModalTag');
   modals.forEach(element => {
     element.addEventListener('show.bs.modal', event => {
-      const id = event.relatedTarget.getAttribute('data-bs-id')
-      const modalBodyInput = element.querySelector('#_id')
-      
-      modalBodyInput.value = id
+      const id = event.relatedTarget.getAttribute('data-bs-id') 
+      element.querySelector('#_id').value = id
     })
   });
 

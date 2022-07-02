@@ -17,6 +17,6 @@ class StoreController extends BaseController
     $data = $request->validated();
     $data['material_id'] = $materialId;
     $this->service->store($data);
-    return redirect()->route('view-material', $materialId);
+    return back();
   }
 }

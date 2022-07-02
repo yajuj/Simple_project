@@ -25,7 +25,7 @@ class AppendRequest extends FormRequest
   public function rules()
   {
     return [
-      "tag_id" => '',
+      "tag_id" => 'exists:tags,id',
     ];
   }
 }

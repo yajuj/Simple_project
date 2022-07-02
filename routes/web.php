@@ -19,7 +19,7 @@ Route::namespace('Material')->group(function () {
   Route::get('/', IndexController::class)->name('list-material');
   Route::post('/', StoreController::class)->name('store-material');
   Route::get('/{material}', ShowController::class)->name('view-material');
-  Route::post('/{material}', UpdateController::class)->name('update-material');
+  Route::patch('/{material}', UpdateController::class)->name('update-material');
   Route::get('/{material}/edit', EditController::class)->name('edit-material');
   Route::delete('/', DestroyController::class)->name('destroy-material');
 });
@@ -46,7 +46,7 @@ Route::namespace('Tag')->prefix('tags')->group(function () {
 });
 
 Route::namespace('Link')->prefix('links')->group(function () {
-  Route::patch('/', UpdateController::class)->name('update-link');
+  Route::patch('/index', UpdateController::class)->name('update-link');
   Route::post('/index/{materialId}', StoreController::class)->name('store-link');
   Route::delete('/', DestroyController::class)->name('destroy-link');
 });
