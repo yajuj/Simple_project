@@ -1,4 +1,7 @@
 @extends('layouts.main')
+@section('title')
+<title>Категории</title>
+@endsection
 @section('content')
 <div class="container">
   <h1 class="my-md-5 my-4">Категории</h1>
@@ -54,7 +57,7 @@
         <form action="{{route('destroy-category')}}" method="POST">
           @csrf
           @method('delete')
-          <input type="hidden" class="form-control" id="recipient-name" name='id'>
+          <input type="hidden" class="form-control" id="_id" name='id'>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
           <input type="submit" class="btn btn-danger" value="Удалить">
         </form>
@@ -63,14 +66,11 @@
   </div>
 </div>
 <script>
-  const exampleModal = document.getElementById('exampleModal')
-exampleModal.addEventListener('show.bs.modal', event => {
-  const button = event.relatedTarget
-  const recipient = button.getAttribute('data-bs-whatever')
-  const modalTitle = exampleModal.querySelector('.modal-title')
-  const modalBodyInput = exampleModal.querySelector('#recipient-name')
+  const modal = document.getElementById('exampleModal')
+  modal.addEventListener('show.bs.modal', event => {
+  const id = event.relatedTarget.getAttribute('data-bs-whatever')
+  modal.querySelector('#_id') = id;
 
-  modalBodyInput.value = recipient
 })
 </script>
 @endsection

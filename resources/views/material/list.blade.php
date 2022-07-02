@@ -1,15 +1,18 @@
 @extends('layouts.main')
+@section('title')
+<title>Материалы</title>
+@endsection
 @section('content')
 <div class="container">
   <h1 class="my-md-5 my-4">Материалы</h1>
   <a class="btn btn-primary mb-4" href="{{route('create-material')}}" role="button">Добавить</a>
   <div class="row">
     <div class="col-md-8">
-      <form>
+      <form action="" method="get">
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon"
+          <input type="text" class="form-control" name="q" placeholder="" aria-label="Example text with button addon"
             aria-describedby="button-addon1">
-          <button class="btn btn-primary" type="button" id="button-addon1">Искать</button>
+          <button class="btn btn-primary" type="submit" id="button-addon1">Искать</button>
         </div>
       </form>
     </div>
@@ -71,7 +74,7 @@
         <form action="{{route('destroy-material')}}" method="POST">
           @csrf
           @method('delete')
-          <input type="hidden" class="form-control" id="recipient-name" name='id'>
+          <input type="hidden" class="form-control" id="_id" name='id'>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           <input type="submit" class="btn btn-danger" value="Remove">
         </form>
@@ -80,14 +83,10 @@
   </div>
 </div>
 <script>
-  const exampleModal = document.getElementById('exampleModal')
-exampleModal.addEventListener('show.bs.modal', event => {
-  const button = event.relatedTarget
-  const recipient = button.getAttribute('data-bs-whatever')
-  const modalTitle = exampleModal.querySelector('.modal-title')
-  const modalBodyInput = exampleModal.querySelector('#recipient-name')
-
-  modalBodyInput.value = recipient
+  const modal = document.getElementById('exampleModal')
+  modal.addEventListener('show.bs.modal', event => {
+  const id = event.relatedTarget.getAttribute('data-bs-whatever');
+  const modalBodyInput = modal.querySelector('#_id') = id;
 })
 </script>
 @endsection

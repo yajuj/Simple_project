@@ -28,13 +28,25 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{route('list-material')}}">Материалы</a>
+                <a class="nav-link 
+                @if (!mb_ereg('tags|categories',url()->current()))
+                active
+                @endif
+                " aria-current="page" href="{{route('list-material')}}">Материалы</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{route('list-tag')}}">Теги</a>
+                <a class="nav-link
+                @if (mb_ereg('tags',url()->current()))
+                active
+                @endif
+                " href="{{route('list-tag')}}">Теги</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{route('list-category')}}">Категории</a>
+                <a class="nav-link
+                @if (mb_ereg('categories',url()->current()))
+                active
+                @endif
+                " href="{{route('list-category')}}">Категории</a>
               </li>
             </ul>
           </div>

@@ -47,6 +47,6 @@ Route::namespace('Tag')->prefix('tags')->group(function () {
 
 Route::namespace('Link')->prefix('links')->group(function () {
   Route::patch('/', UpdateController::class)->name('update-link');
-  Route::post('/{materialId}', StoreController::class)->name('store-link');
+  Route::post('/index/{materialId}', StoreController::class)->name('store-link');
   Route::delete('/', DestroyController::class)->name('destroy-link');
 });

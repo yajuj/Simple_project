@@ -1,4 +1,7 @@
 @extends('layouts.main')
+@section('title')
+<title>Обновить тег</title>
+@endsection
 @section('content')
 <div class="container">
   <h1 class="my-md-5 my-4">Обновить тег</h1>

@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('title')
-<title>Материалы</title>
+<title>Материал - {{$material->title}}</title>
 @endsection
 @section('content')
 <div class="container">
@@ -42,7 +42,7 @@
       <ul class="list-group mb-4">
         @foreach ($material->tags as $tag)
         <li class="list-group-item list-group-item-action d-flex justify-content-between">
-          <a href="#" class="me-3">
+          <a href="{{url("/?q={$tag->title}")}}" class="me-3">
             {{$tag->title}}
           </a>
           <a type="button" role="button" class="text-decoration-none" data-bs-toggle="modal"
@@ -149,7 +149,7 @@
       <form action="{{route('update-link')}}" method="POST">
         @csrf
         @method('PATCH')
-        <input type="hidden" class="form-control" id="recipient-name" name='link_id'>
+        <input type="hidden" class="form-control" id="_id" name='link_id'>
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalToggleLabel">Обновить ссылку</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -195,7 +195,7 @@
         <form action="{{route('unbind-tag-from-material',$material)}}" method="POST">
           @csrf
           @method('delete')
-          <input type="hidden" class="form-control" id="recipient-name" name='tag_id'>
+          <input type="hidden" class="form-control" id="_id" name='tag_id'>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
           <input type="submit" class="btn btn-danger" value="Удалить">
         </form>
@@ -218,7 +218,7 @@
         <form action="{{route('destroy-link')}}" method="POST">
           @csrf
           @method('delete')
-          <input type="hidden" class="form-control" id="recipient-name" name='id'>
+          <input type="hidden" class="form-control" id="_id" name='id'>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
           <input type="submit" class="btn btn-danger" value="Удалить">
         </form>
@@ -232,7 +232,7 @@
   modals.forEach(element => {
     element.addEventListener('show.bs.modal', event => {
       const id = event.relatedTarget.getAttribute('data-bs-id')
-      const modalBodyInput = element.querySelector('#recipient-name')
+      const modalBodyInput = element.querySelector('#_id')
       
       modalBodyInput.value = id
     })
@@ -251,7 +251,7 @@
       inputs[0].value = label;
       inputs[1].value = href;
 
-      const modalBodyInput = updateLinkModal.querySelector('#recipient-name');
+      const modalBodyInput = updateLinkModal.querySelector('#_id');
       
       modalBodyInput.value = id;
     })
