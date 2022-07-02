@@ -24,8 +24,8 @@ class UpdateRequest extends FormRequest
   public function rules()
   {
     return [
-      "label" => ["string", "nullable"],
-      "url" => ["string", "url", "required"],
+      "label" => ["string", "nullable", "max:255"],
+      "url" => ["string", "url", "required", "max:255"],
       "link_id" => ["string", "required"],
     ];
   }
