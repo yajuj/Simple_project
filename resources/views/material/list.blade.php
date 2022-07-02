@@ -13,6 +13,9 @@
           <input type="text" class="form-control" value="{{$query}}" name="q" placeholder=""
             aria-label="Example text with button addon" aria-describedby="button-addon1">
           <button class="btn btn-primary" type="submit" id="button-addon1">Искать</button>
+          @if ($query)
+          <a class="btn btn-danger mx-1" href="/">Сбросить</a>
+          @endif
         </div>
       </form>
     </div>
