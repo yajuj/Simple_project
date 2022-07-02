@@ -52,8 +52,7 @@
         </div>
         <div class="form-floating mb-3">
           <textarea class="form-control" placeholder="Напишите краткое описание" id="floatingDescription"
-            style="height: 100px" name="description">
-            {{old('description')}}</textarea>
+            style="height: 100px" name="description">{{old('description')}}</textarea>
           <label for="floatingDescription">Описание</label>
           <div class="invalid-feedback">
             Пожалуйста, заполните поле
