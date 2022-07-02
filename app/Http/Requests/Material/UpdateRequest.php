@@ -27,7 +27,7 @@ class UpdateRequest extends FormRequest
   {
     return [
       "type" => [new Enum(MaterialTypesEnum::class), "required"],
-      "category_id" => ["unique:categories", "required"],
+      "category_id" => ["exists:categories,id", "required"],
       "title" => ["string", "required"],
       "authors" => ["string", "nullable"],
       "description" => ["string", "nullable"]
