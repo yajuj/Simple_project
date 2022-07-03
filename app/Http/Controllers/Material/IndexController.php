@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Material;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class IndexController extends Controller
 {
@@ -18,17 +19,22 @@ class IndexController extends Controller
   public function __invoke(Request $request)
   {
     $query = $request->q;
-    $tag = Tag::where('title', '=', "$query")->first();
-    $tags = $tag ? $tag->materials : null;
 
-    $category = Category::where('title', '=', "$query")->first();
-    $categories = $category ? $category->materials : null;
+    // $categories = Tag::where('title', 'like', "{$query}%")->first()->materials()->count();
 
+    $materials_ids = Material::selectRaw('distinct material_id')
+      ->join('material_tags', 'materials.id', '=', 'material_tags.material_id')
+      ->orWhere('title', 'like', "%{$query}%")
+      ->orWhere('authors', 'like', "%{$query}%")
+      ->orWhereIn('material_tags.tag_id', function ($q) use ($query) {
+        $q->select(DB::raw('id'))->from('tags')->where('title', 'like', "{$query}%");
+      })
+      ->orWhereIn('category_id', function ($q) use ($query) {
+        $q->select(DB::raw('id'))->from('categories')->where('title', 'like', "{$query}%");
+      })
+      ->get();
 
-    $rawMaterials = Material::where('title', 'like', "%{$query}%")
-      ->orWhere('authors', 'like', "%{$query}%")->get();
-
-    $materials = collect($rawMaterials)->merge($tags)->merge($categories);
+    $materials = Material::whereIn('id', $materials_ids)->get();
 
     return view('material.list', compact('materials', 'query'));
   }
