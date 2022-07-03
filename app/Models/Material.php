@@ -27,4 +27,13 @@ class Material extends Model
   {
     return $this->belongsToMany(Tag::class, 'material_tags', 'material_id', 'tag_id');
   }
+
+  public static function boot()
+  {
+    parent::boot();
+
+    static::deleting(function (Material $material) {
+      $material->links()->delete();
+    });
+  }
 }

@@ -21,7 +21,7 @@ class MaterialFactory extends Factory
     return [
       'title' => fake()->text(10),
       'authors' => fake()->name(),
-      'description' => fake()->text(100),
+      'description' => fake()->text(300),
       'type' => Arr::random(getMaterialTypesEnum()),
       'category_id' => Category::inRandomOrder()->first()
     ];
