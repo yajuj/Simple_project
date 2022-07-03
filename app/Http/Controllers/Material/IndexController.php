@@ -22,14 +22,13 @@ class IndexController extends Controller
     $tags = $tag ? $tag->materials : null;
 
     $category = Category::where('title', '=', "$query")->first();
-    $categoryId = $category ? $category->id : null;
+    $categories = $category ? $category->materials : null;
 
 
     $rawMaterials = Material::where('title', 'like', "%{$query}%")
-      ->orWhere('authors', 'like', "%{$query}%")
-      ->orWhere('category_id', '=', $categoryId)->get();
+      ->orWhere('authors', 'like', "%{$query}%")->get();
 
-    $materials = collect($rawMaterials)->merge($tags);
+    $materials = collect($rawMaterials)->merge($tags)->merge($categories);
 
     return view('material.list', compact('materials', 'query'));
   }
