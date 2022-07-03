@@ -18,12 +18,12 @@ class IndexController extends Controller
   {
     $query = $request->q;
 
-    $materials_ids = Material::selectRaw('distinct material_id')
+    $materials_ids = Material::selectRaw('distinct materials.id as id')
       ->join('material_tags', 'materials.id', '=', 'material_tags.material_id')
-      ->orWhere('title', 'like', "%{$query}%")
-      ->orWhere('authors', 'like', "%{$query}%")
+      ->orWhere('materials.title', 'like', "%{$query}%")
+      ->orWhere('materials.authors', 'like', "%{$query}%")
       ->orWhereIn('material_tags.tag_id', function ($q) use ($query) {
-        $q->select(DB::raw('id'))->from('tags')->where('title', 'like', "{$query}%");
+        $q->select(DB::raw('id'))->from('tags')->where('tags.title', 'like', "{$query}%");
       })
       ->orWhereIn('category_id', function ($q) use ($query) {
         $q->select(DB::raw('id'))->from('categories')->where('title', 'like', "{$query}%");
