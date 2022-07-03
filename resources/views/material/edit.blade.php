@@ -12,7 +12,7 @@
         @method('PATCH')
         <div class="form-floating mb-3">
           <select class="form-select" id="floatingSelectType" name="type">
-            <option selected>Выберите тип</option>
+            <option selected value="null">Выберите тип</option>
             @foreach ($types as $type)
             <option @if ($material->type == $type)
               selected

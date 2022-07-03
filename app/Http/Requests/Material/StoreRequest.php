@@ -37,10 +37,11 @@ class StoreRequest extends FormRequest
   public function messages()
   {
     return [
+      'type.required' => 'Тип не может быть пустым',
       'type.*' => 'Недопустимый тип',
       'title.string' => 'Название должно быть строкой',
-      'title.required' => 'Ссылка не может пустой',
-      'title.max' => 'Ссылка не может быть длиннее 255 символов',
+      'title.required' => 'Название не может пустой',
+      'title.max' => 'Название не может быть длиннее 255 символов',
       'authors.string' => 'Строка авторов должна быть строкой',
       'authors.max' => 'Строка авторов не может быть длиннее 255 символов',
       'description.string' => 'Описание должно быть строкой',

@@ -11,7 +11,7 @@
         @csrf
         <div class="form-floating mb-3">
           <select class="form-select" id="floatingSelectType" name="type">
-            <option selected>Выберите тип</option>
+            <option selected value="null">Выберите тип</option>
             @foreach ($types as $type)
             <option {{old('type')==$type ? 'selected' :''}} value="{{$type}}">{{$type}}</option>
             @endforeach
