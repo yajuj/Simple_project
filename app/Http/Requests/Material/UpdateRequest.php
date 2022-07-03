@@ -33,4 +33,18 @@ class UpdateRequest extends FormRequest
       "description" => ["string", "nullable"]
     ];
   }
+
+  public function messages()
+  {
+    return [
+      'type.*' => 'Недопустимый тип',
+      'title.string' => 'Название должно быть строкой',
+      'title.required' => 'Ссылка не может пустой',
+      'title.max' => 'Ссылка не может быть длиннее 255 символов',
+      'authors.string' => 'Строка авторов должна быть строкой',
+      'authors.max' => 'Строка авторов не может быть длиннее 255 символов',
+      'description.string' => 'Описание должно быть строкой',
+      'category_id.*' => 'Недопустимая категория',
+    ];
+  }
 }

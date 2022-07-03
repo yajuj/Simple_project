@@ -18,7 +18,7 @@
           </div>
         </div>
         @error('title')
-        <p class="p-1 mt-1 text-danger">Название не может быть пустым</p>
+        <p class="p-1 mt-1 text-danger">{{ $message }}</p>
         @enderror
         <button class="btn btn-primary" type="submit">Добавить</button>
       </form>

@@ -28,4 +28,11 @@ class AppendRequest extends FormRequest
       "tag_id" => 'exists:tags,id',
     ];
   }
+
+  public function messages()
+  {
+    return [
+      'tag_id.exists' => 'Недопустимый тэг'
+    ];
+  }
 }

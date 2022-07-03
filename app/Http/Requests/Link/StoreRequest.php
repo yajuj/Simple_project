@@ -28,4 +28,16 @@ class StoreRequest extends FormRequest
       "url" => ["string", "url", "required", "max:255"],
     ];
   }
+
+  public function messages()
+  {
+    return [
+      'label.string' => 'Название должно быть строкой',
+      'label.max' => 'Название не может быть длиннее 255 символов',
+      'url.string' => 'Ссылка должна быть строкой',
+      'url.url' => 'Ссылка должна быть типа url',
+      'url.required' => 'Ссылка не может пустой',
+      'url.max' => 'Ссылка не может быть длиннее 255 символов',
+    ];
+  }
 }

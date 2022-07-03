@@ -24,7 +24,17 @@ class UpdateRequest extends FormRequest
   public function rules()
   {
     return [
-      "title" => ["string", "required", "max:255"],
+      "title" => ["string", "required", "max:255", "unique:categories,title"],
+    ];
+  }
+
+  public function messages()
+  {
+    return [
+      'title.required' => 'Название не может быть пустым',
+      'title.string' => 'Название должно быть строкой',
+      'title.unique' => 'Название должно быть уникальным',
+      'title.max' => 'Название не может быть длиннее 255 символов',
     ];
   }
 }

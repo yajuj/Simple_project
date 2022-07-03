@@ -24,6 +24,9 @@
           <div class="invalid-feedback">
             Пожалуйста, выберите значение
           </div>
+          @error('type')
+          <p class="p-1 mt-1 text-danger">{{ $message }}</p>
+          @enderror
         </div>
         <div class="form-floating mb-3">
           <select class="form-select" id="floatingSelectCategory" name="category_id">
@@ -39,6 +42,9 @@
           <div class="invalid-feedback">
             Пожалуйста, выберите значение
           </div>
+          @error('category_id')
+          <p class="p-1 mt-1 text-danger">{{ $message }}</p>
+          @enderror
         </div>
         <div class="form-floating mb-3">
           <input type="text" class="form-control" value="{{$material->title}}" placeholder="Напишите название"
@@ -47,6 +53,9 @@
           <div class="invalid-feedback">
             Пожалуйста, заполните поле
           </div>
+          @error('title')
+          <p class="p-1 mt-1 text-danger">{{ $message }}</p>
+          @enderror
         </div>
         <div class="form-floating mb-3">
           <input type="text" class="form-control" value="{{$material->authors}}" placeholder="Напишите авторов"
@@ -55,6 +64,9 @@
           <div class="invalid-feedback">
             Пожалуйста, заполните поле
           </div>
+          @error('authors')
+          <p class="p-1 mt-1 text-danger">{{ $message }}</p>
+          @enderror
         </div>
         <div class="form-floating mb-3">
           <textarea class="form-control" placeholder="Напишите краткое описание" id="floatingDescription"
@@ -63,10 +75,10 @@
           <div class="invalid-feedback">
             Пожалуйста, заполните поле
           </div>
+          @error('description')
+          <p class="p-1 mt-1 text-danger">{{ $message }}</p>
+          @enderror
         </div>
-        @error('title')
-        <p class="p-1 mt-1 text-danger">Название не может быть пустым</p>
-        @enderror
         <button class="btn btn-primary" type="submit">Обновить</button>
       </form>
     </div>
