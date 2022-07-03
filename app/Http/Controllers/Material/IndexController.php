@@ -18,7 +18,7 @@ class IndexController extends Controller
   {
     $query = $request->q;
 
-    $materials_ids = Material::selectRaw('distinct materials.id as id')
+    $materials_ids = Material::selectRaw('distinct material_id')
       ->leftJoin('material_tags', 'materials.id', '=', 'material_tags.material_id')
       ->orWhere('materials.title', 'like', "%{$query}%")
       ->orWhere('materials.authors', 'like', "%{$query}%")
