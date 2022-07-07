@@ -14,7 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::namespace('Material')->group(function () {
+Route::redirect('/', '/index');
+
+Route::namespace('Material')->prefix('index')->group(function () {
   Route::get('/create', CreateController::class)->name('create-material');
   Route::get('/', IndexController::class)->name('list-material');
   Route::post('/', StoreController::class)->name('store-material');
@@ -25,28 +27,28 @@ Route::namespace('Material')->group(function () {
 });
 
 Route::namespace('Category')->prefix('categories')->group(function () {
-  Route::delete('/index', DestroyController::class)->name('destroy-category');
-  Route::get('/index', IndexController::class)->name('list-category');
-  Route::post('/index', StoreController::class)->name('store-category');
+  Route::delete('/', DestroyController::class)->name('destroy-category');
+  Route::get('/', IndexController::class)->name('list-category');
+  Route::post('/', StoreController::class)->name('store-category');
   Route::patch('/{category}', UpdateController::class)->name('update-category');
   Route::get('/{category}/edit', EditController::class)->name('edit-category');
-  Route::get('/create-category', CreateController::class)->name('create-category');
+  Route::get('/create', CreateController::class)->name('create-category');
 });
 
 Route::namespace('Tag')->prefix('tags')->group(function () {
-  Route::delete('/index', DestroyController::class)->name('destroy-tag');
-  Route::get('/index', IndexController::class)->name('list-tag');
-  Route::post('/index', StoreController::class)->name('store-tag');
+  Route::delete('/', DestroyController::class)->name('destroy-tag');
+  Route::get('/', IndexController::class)->name('list-tag');
+  Route::post('/', StoreController::class)->name('store-tag');
   Route::patch('/{tag}', UpdateController::class)->name('update-tag');
   Route::get('/{tag}/edit', EditController::class)->name('edit-tag');
-  Route::get('/create-tag', CreateController::class)->name('create-tag');
+  Route::get('/create', CreateController::class)->name('create-tag');
 
   Route::post('/append/{material}', TagToMaterialController::class)->name('append-tag-to-material');
   Route::delete('/unbind/{material}', RemoveTagToMaterialController::class)->name('unbind-tag-from-material');
 });
 
 Route::namespace('Link')->prefix('links')->group(function () {
-  Route::patch('/index', UpdateController::class)->name('update-link');
-  Route::post('/index/{materialId}', StoreController::class)->name('store-link');
+  Route::patch('/', UpdateController::class)->name('update-link');
+  Route::post('/{materialId}', StoreController::class)->name('store-link');
   Route::delete('/', DestroyController::class)->name('destroy-link');
 });

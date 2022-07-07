@@ -51,7 +51,7 @@
       <ul class="list-group mb-4">
         @foreach ($material->tags as $tag)
         <li class="list-group-item list-group-item-action d-flex justify-content-between">
-          <a href="{{url("/?q={$tag->title}")}}" class="me-3">
+          <a href="{{url("/index?q={$tag->title}")}}" class="me-3">
             {{$tag->title}}
           </a>
           <a type="button" role="button" class="text-decoration-none" data-bs-toggle="modal"
