@@ -62,6 +62,7 @@
       </tbody>
     </table>
   </div>
+  {{ $materials->withQueryString()->links() }}
 </div>
 @endsection
 @section('modal')

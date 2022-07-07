@@ -17,6 +17,7 @@ class IndexController extends Controller
   public function __invoke(Request $request)
   {
     $query = $request->q;
+    $perPage = $request->perPage ?? 10;
 
     $materials_ids = Material::selectRaw('distinct id')
       ->leftJoin('material_tags', 'materials.id', '=', 'material_tags.material_id')
@@ -30,7 +31,7 @@ class IndexController extends Controller
       })
       ->get();
 
-    $materials = Material::whereIn('id', $materials_ids)->get();
+    $materials = Material::whereIn('id', $materials_ids)->paginate($perPage);
 
     return view('material.list', compact('materials', 'query'));
   }
