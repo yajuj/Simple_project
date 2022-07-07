@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Book;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::redirect('/', '/index');
+
+Route::fallback(function () {
+  return abort(404);
+});
 
 Route::namespace('Material')->prefix('index')->group(function () {
   Route::get('/create', CreateController::class)->name('create-material');
